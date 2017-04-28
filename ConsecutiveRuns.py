@@ -7,7 +7,8 @@ class ConsecutiveRunParser(object):
 			diffs = [subset[i+1] - subset[i] for i in range(length-1)]
 			return all([diff in ConsecutiveRunParser.VALID_RUN_DIFFS and diff == diffs[0] for diff in diffs])
 			
-		indecies = [index for index, number in enumerate(numbers) if (index + length - 1) < len(numbers) and isRun(numbers[index:index+length])]
+		listLength = len(numbers)
+		indecies = [index for index in range(listLength) if (index + length - 1) < listLength and isRun(numbers[index:index+length])]
 		return indecies if len(indecies) != 0 else "No Runs Found"
 		
 def runTest(input, expected):
